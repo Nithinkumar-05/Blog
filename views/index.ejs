@@ -1,0 +1,33 @@
+<div class="author">
+    <h1 class="author__heading">Hi, I am Nithin Eruventi</h1>
+    <h2  class="author__sub-title">A passionate developer from India.</h2>
+    <!-- social media links -->
+    <ul class="social-icons">
+
+    </ul>
+    <img src="/img/home_blog.jpg" alt="Iron man pic" >
+    <section class="articles">
+        <h2 class="articles__headings">Latest Posts</h2>
+        <ul  class="article-ul">
+            
+         
+
+            <% data.forEach(post => { %>
+                <li>
+                    <a href="/post/<%= post._id %>">
+                        <span><%= post.title %></span>
+                        <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+                    </a>
+                </li>
+            <% }) %>
+            
+               
+        </ul>
+
+        <% if (nextPage !== false) { %>
+            <a href="/?page=<%= nextPage %>" class="pagination">&lt; View older Posts</a>
+        <% } %>
+
+        
+    </section>
+</div>

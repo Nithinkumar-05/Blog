@@ -31,8 +31,7 @@ router.get('', async (req, res) => {
             locals,
             data,
             current: page,
-            nextPage: hasNextPage ? nextPage : false ,
-            currentRoute : '/'
+            nextPage: hasNextPage ? nextPage : false 
         });
         
     } catch (error) {
@@ -55,8 +54,7 @@ router.get('/post/:id', async (req, res) => {
         const data = await Post.findById({ _id:slug}).maxTimeMS(30000); 
         const locals={
             title: data.title,
-            description: "A simple blog created using Nodejs, Express & MongoDB",
-            currentRoute : `/post/${slug}`
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
         res.render('post',{locals,data});
         
@@ -78,8 +76,7 @@ router.post('/search', async (req, res) => {
     try {
         const locals={
             title: "Search",
-            description: "A simple blog created using Nodejs, Express & MongoDB",
-            currentRoute : '/search'
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
         
         let searchTerm= req.body.searchTerm;
@@ -111,13 +108,13 @@ router.post('/search', async (req, res) => {
 
 //about
 router.get('/about',(req,res)=>{
-    res.render('about' , {currentRoute : '/about'});
+    res.render('about');
 });
 
 
 //contact
 router.get('/contact',(req,res)=>{
-res.render('contact',{currentRoute : '/contact'});
+res.render('contact');
 });
 
 //export

@@ -1,25 +1,65 @@
-<h2>Sign In</h2>
 
-<form action="/admin" method="post">
-    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" name="username" placeholder="Enter username"><br><br>
+    <style>
+        h2 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: rgba(244, 244, 244, 0.2);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .hiddenreg {
+            display: none;
+        }
+    </style>
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" id="password" name="password" placeholder="Enter password" style="width: 100%;"><br><br>
+    <h2 class="signin">Sign In</h2>
+    <form action="/admin" class="signin" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password">
+        <input type="submit" value="Login"> 
+        <!-- <input type="button" class="reg" value="Sign Up"> -->
+    </form>
+    <!-- <h2 class="hiddenreg">Register</h2>
+    <form action="/register" class="hiddenreg" method="post">
+        <label for="username"><b>Username</b></label>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="password" name="password" placeholder="Enter password" style="width: 100%;">
+        <input type="submit" value="Register" class="btn">
+    </form> -->
 
-    <input type="submit" value="Login" class="btn">
-   
-</form>
-<!-- 
-<h2>Register</h2>
 
- <form action="/admin" method="post">
-    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" name="username" placeholder="Enter username"><br><br>
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" id="password" name="password" placeholder="Enter password" style="width: 100%;"><br><br>
-
-    <input type="submit" value="Login" class="btn">
-   
-</form>  -->

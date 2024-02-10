@@ -19,3 +19,10 @@ document.addEventListener('DOMContentLoaded',function(){
         searchBar.classList.remove('open');
     });
 });
+// document.addEventListener('DOMContentLoaded',function(){
+//     document.querySelector('.reg').addEventListener('click', function() {
+//         document.querySelector('.signin').classList.add('hiddenreg');
+//         document.querySelector('.hiddenreg').classList.remove('hiddenreg');
+//     });
+
+// })

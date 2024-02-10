@@ -42,8 +42,7 @@ router.get('/admin', async (req, res) => {
         
         const locals={
             title: "Admin",
-            description: "A simple blog created using Nodejs, Express & MongoDB",
-            currentRoute : '/admin'
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
         
         
@@ -76,7 +75,7 @@ router.post('/admin', async (req, res) => {
         const token = jwt.sign({ userId: user._id},jwtSecret);
         res.cookie('token' , token , { httpOnly: true});
 
-        res.redirect('/dashboard',{currentRoute : '/dashboard'});
+        res.redirect('/dashboard');
 
     } catch (error) {
         
@@ -106,6 +105,7 @@ router.post('/register', async (req, res) => {
             }
             res.status(500).json({ message:' internal server error'});
         }
+        res.redirect('/index');
 
     } catch (error) {
         console.log(error);
@@ -125,8 +125,7 @@ router.get('/dashboard', authMiddleware,async (req,res) =>{
     try {
         const locals={
             title: "Dashboard",
-            description: "A simple blog created using Nodejs, Express & MongoDB",
-            currentRoute : '/dashboard'
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
         const data = await Post.find();
         res.render('admin/dashboard',{
@@ -147,8 +146,7 @@ router.get('/add-post', authMiddleware,async (req,res) =>{
     try {
         const locals={
             title: "Add Post",
-            description: "A simple blog created using Nodejs, Express & MongoDB",
-            currentRoute : '/add-post'
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
         
         const data=Post.find();
@@ -170,7 +168,7 @@ router.get('/dashboard', authMiddleware,async (req,res) =>{
     try {
         const locals={
             title: "Dashboard",
-            description: "A simple blog created using Nodejs, Express & MongoDB", currentRoute : '/dashboard'
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
         const data = await Post.find();
         res.render('admin/dashboard',{
@@ -191,11 +189,10 @@ router.get('/dashboard', authMiddleware,async (req,res) =>{
     try {
         const newPost = new Post({
             title: req.body.title,
-            content: req.body.body,
-            currentRoute : '/add-post'
+            content: req.body.body
         })
         await Post.create(newPost);
-        res.redirect('/dashboard',{currentRoute : '/dashboard'});
+        res.redirect('/dashboard');
     } catch (error) {
         console.log(error);
     }
@@ -210,8 +207,7 @@ router.get('/dashboard', authMiddleware,async (req,res) =>{
         const data= await Post.findOne({ _id: req.params.id});
         const locals={
             title: "Edit Post",
-            description: "A simple blog created using Nodejs, Express & MongoDB",
-            currentRoute : '/edit-post/:id'
+            description: "A simple blog created using Nodejs, Express & MongoDB"
         };
        res.render('admin/edit-post',{
         locals,
@@ -236,7 +232,7 @@ router.get('/dashboard', authMiddleware,async (req,res) =>{
             content: req.body.body,
             updatedAt: Date.now()
         });
-        res.redirect(`/edit-post/${req.params.id}`,{currentRoute : `/edit-post/${req.params.id}`});
+        res.redirect(`/edit-post/${req.params.id}`);
        
     } catch (error) {
 
@@ -270,7 +266,7 @@ router.delete('/delete-post/:id', authMiddleware,async (req,res) =>{
 router.get('/logout',(req,res)=>{
     res.clearCookie('token');
    // res.json({ message:'Logout sucessful'})
-   res.redirect('/',{currentRoute : '/'});
+   res.redirect('/');
 });
 
 

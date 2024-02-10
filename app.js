@@ -10,7 +10,7 @@ const app = express();
 
 //connection mongodb
 const connectDB=require('./server/config/db');
-const {isActiveRoute} = require('./server/helpers/routeHelpers');
+
 const port = 3000||process.env.port;
 
 //static files
@@ -38,7 +38,7 @@ app.use(session({
 //call connectDB
 connectDB();
 
-app.locals.isActiveRoute=isActiveRoute;
+
 
 //routing to server/routes
 app.use('/',require('./server/routes/main'));
